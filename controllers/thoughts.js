@@ -3,7 +3,7 @@ import asyncHandler from '../utils/asyncHandler.js';
 import ErrorResponse from '../utils/ErrorResponse.js';
 
 export const getAllThoughts = asyncHandler(async (req, res, next) => {
-  const thoughts = await Thought.find().populate('author');
+  const thoughts = await Thought.find().sort({ date: -1 }).populate('author');
   res.json(thoughts);
 });
 
